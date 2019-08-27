@@ -1,2 +1,8 @@
 <p>weather works!</p>
-
+<div *ngIf="currentWeather">
+    <p>{{currentWeather.name}}</p>
+    <p>{{currentWeather.main?.temp}}</p>
+    <div *ngIf="currentWeather.weather">
+        <p>{{currentWeather.weather[0].main}}</p>
+    </div>
+</div>
