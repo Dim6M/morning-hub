@@ -35,5 +35,11 @@ export class WeatherComponent implements OnInit {
     console.log(bookmarkedLocation);
   }
 
+  bookMarkLocation() {
+    let bookmarkedLocation = new BookmarkedLocation();
+
+    console.log(bookmarkedLocation);
+  }
+
 
 }
