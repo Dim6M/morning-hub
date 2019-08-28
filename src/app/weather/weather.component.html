@@ -1,6 +1,7 @@
 <p>weather works!</p>
 <input [(ngModel)] = "location" (ngModelChange)="location=$event">
 <button (click)="displayWeather(location)">Show weather</button>
+<button (click)="bookmarkLocation(location)">Bookmark</button>
 <div *ngIf="currentWeather">
     <p>{{currentWeather.name}}</p>
     <p>{{currentWeather.main?.temp | number:'1.0-0'}}</p>
