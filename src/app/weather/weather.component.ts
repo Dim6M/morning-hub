@@ -9,21 +9,21 @@ import { WeatherService } from './weather.service';
 export class WeatherComponent implements OnInit {
 
   currentWeather: any;
+  location: string;
 
   constructor(private weatherService: WeatherService) {
-    this.displayWeather();
   }
   
   ngOnInit() {
   }
 
-  displayWeather(){
+  displayWeather(location: string) {
     this.currentWeather = {};
-    this.weatherService.getCurrentWeather("Paris").subscribe((res: any) => {
-      this.currentWeather = res;
+    this.weatherService.getCurrentWeather(location)
+      .subscribe((res: any) => {
+        this.currentWeather = res;
     });
   }
-
 
 
 }
