@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  //openweathermap api url
+  // openweathermap api url
   apiUrl: 'http://api.openweathermap.org/data/2.5/'
 };
 
