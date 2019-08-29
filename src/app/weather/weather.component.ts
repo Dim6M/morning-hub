@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './weather.service';
+import { FavLocation } from '../fav-location';
 
-class BookmarkedLocation {
-  locationName: string;
-  temperature: number;
-  description: string;
-}
 @Component({
   selector: 'mh-weather',
   templateUrl: './weather.component.html',
@@ -15,6 +11,7 @@ export class WeatherComponent implements OnInit {
 
   currentWeather: any;
   location: string;
+  favLocation: FavLocation;
 
   constructor(private weatherService: WeatherService) {
   }
@@ -29,17 +26,13 @@ export class WeatherComponent implements OnInit {
       });
   }
 
-  bookMarkLocation() {
-    let bookmarkedLocation = new BookmarkedLocation();
-
-    console.log(bookmarkedLocation);
+  bookMarkLocation(location: string) {
+    this.weatherService.getLocationWeather(location)
+      .subscribe((data: FavLocation) => this.favLocation = {
+        location: (data as any).name,
+        temperature: (data as any).main.temp
+      });
+    console.log(this.favLocation);
   }
-
-  bookMarkLocation() {
-    let bookmarkedLocation = new BookmarkedLocation();
-
-    console.log(bookmarkedLocation);
-  }
-
 
 }
