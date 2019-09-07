@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from './weather.service';
-import { FavLocation } from '../fav-location';
+import { WeatherLocation } from '../weather-location';
 
 @Component({
   selector: 'mh-weather',
@@ -11,28 +11,29 @@ export class WeatherComponent implements OnInit {
 
   currentWeather: any;
   location: string;
-  favLocation: FavLocation;
+  weatherLocation: WeatherLocation;
 
   constructor(private weatherService: WeatherService) {
   }
   ngOnInit() {
   }
 
-  displayWeather(location: string) {
+  /* displayWeather(location: string) {
     this.currentWeather = {};
     this.weatherService.getCurrentWeather(location)
       .subscribe((res: any) => {
         this.currentWeather = res;
       });
-  }
+  } */
 
-  bookMarkLocation(location: string) {
+  getLocationWeather(location: string) {
     this.weatherService.getLocationWeather(location)
-      .subscribe((data: FavLocation) => this.favLocation = {
+      .subscribe((data: WeatherLocation) => this.weatherLocation = {
         location: (data as any).name,
-        temperature: (data as any).main.temp
+        temperature: (data as any).main.temp,
+        description: (data as any).weather[0].main,
+        icon: (data as any).weather[0].icon
       });
-    console.log(this.favLocation);
   }
 
 }
