@@ -1,0 +1,14 @@
+.location-tab{
+    display: flex;
+    height: 100px;
+    width: 500px;
+    flex-wrap: wrap;
+    justify-content: space-evenly ;
+    margin: auto;
+}
+
+.location-item{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
