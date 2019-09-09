@@ -12,6 +12,7 @@ export class WeatherComponent implements OnInit {
   currentWeather: any;
   location: string;
   weatherLocation: WeatherLocation;
+  locations: WeatherLocation[] = [];
 
   constructor(private weatherService: WeatherService) {
   }
@@ -34,6 +35,14 @@ export class WeatherComponent implements OnInit {
         description: (data as any).weather[0].main,
         icon: (data as any).weather[0].icon
       });
+  }
+
+  bookMarkLocation() {
+    if (this.weatherLocation) {
+      this.locations.push(this.weatherLocation);
+    }
+    console.log(this.locations);
+
   }
 
 }

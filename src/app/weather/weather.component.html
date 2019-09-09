@@ -1,8 +1,20 @@
 <p>weather works!</p>
-<input [(ngModel)]="location" (ngModelChange)="location=$event">
-<button (click)="getLocationWeather(location)">Show weather</button>
-<div *ngIf="weatherLocation">
-    <p>{{weatherLocation.location}}</p>
-    <p>{{weatherLocation.temperature | number:'1.0-0'}}</p>
-    <p>{{weatherLocation.description}}</p>
+<div>
+    <input [(ngModel)]="location" (ngModelChange)="location=$event">
+    <button (click)="getLocationWeather(location)">Show weather</button>
+    <button (click)="bookMarkLocation()">Bookmark</button>
+    <div *ngIf="weatherLocation">
+        <div>{{weatherLocation.location}}</div>
+        <p>{{weatherLocation.temperature | number:'1.0-0'}}</p>
+        <img src='http://openweathermap.org/img/wn/{{weatherLocation.icon}}@2x.png'>
+        <div>{{weatherLocation.description}}</div>
+    </div>
+    <div class="location-tab">
+        <div *ngFor="let loc of locations">
+            <div>{{loc.location}}</div>
+            <p>{{loc.temperature | number:'1.0-0'}}</p>
+            <img src='http://openweathermap.org/img/wn/{{loc.icon}}.png'>
+            <div>{{loc.description}}</div>
+        </div>
+    </div>
 </div>
